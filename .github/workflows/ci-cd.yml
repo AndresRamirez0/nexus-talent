@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-test-backend:
     runs-on: ubuntu-latest
+    env:
+      JWT_SECRET: secret_test_123
+      PORT: 3001
     defaults:
       run:
         working-directory: ./backend
