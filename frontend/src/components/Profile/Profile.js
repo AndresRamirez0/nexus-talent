@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { userService } from '../../services/api';
+import ProjectList from '../Portfolio/ProjectList';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -111,15 +112,19 @@ const Profile = () => {
           </form>
         )}
       </div>
+      
+      <div style={styles.card}>
+        <ProjectList />
+      </div>
     </div>
   );
 };
 
 const styles = {
   container: { minHeight:'100vh', backgroundColor:'#f0f4f8',
-    display:'flex', justifyContent:'center', padding:'40px 16px' },
+    display:'flex', flexDirection: 'column', alignItems:'center', padding:'40px 16px', gap: '20px' },
   card: { backgroundColor:'white', borderRadius:'12px', padding:'40px',
-    boxShadow:'0 4px 20px rgba(0,0,0,0.1)', width:'100%', maxWidth:'560px', height:'fit-content' },
+    boxShadow:'0 4px 20px rgba(0,0,0,0.1)', width:'100%', maxWidth:'800px', height:'fit-content' },
   header: { display:'flex', alignItems:'center', gap:'20px', marginBottom:'32px' },
   avatar: { width:'70px', height:'70px', borderRadius:'50%', backgroundColor:'#2E5BA8',
     color:'white', fontSize:'28px', fontWeight:'bold', display:'flex',

@@ -25,4 +25,21 @@ export const userService = {
   updateProfile: (data) => api.put('/users/profile', data),
 };
 
+export const portfolioService = {
+  getPublicPortfolio: (userId) => api.get(`/portfolio/${userId}`),
+  addProject: (formData) => api.post('/portfolio/projects', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }),
+  editProject: (id, formData) => api.put(`/portfolio/projects/${id}`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }),
+  removeProject: (id) => api.delete(`/portfolio/projects/${id}`)
+};
+
+export const feedbackService = {
+  getFeedback: (projectId) => api.get(`/feedback/projects/${projectId}`),
+  addFeedback: (projectId, data) => api.post(`/feedback/projects/${projectId}`, data),
+  removeComment: (commentId) => api.delete(`/feedback/comments/${commentId}`)
+};
+
 export default api;
