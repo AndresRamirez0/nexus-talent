@@ -65,7 +65,7 @@ describe('Feedback Integration Tests', () => {
   it('Eliminar Comentario: Exitoso por autor', async () => {
     pool.query.mockResolvedValueOnce({ rows: [{ id: 'comm-1', usuario_id: '123', proyecto_id: 'proj-1' }] });
     pool.query.mockResolvedValueOnce({ rows: [{ id: 'proj-1', owner_id: '999' }] });
-    pool.query.mockResolvedValueOnce({ rowCount: 1 }); // delete
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 'comm-1' }] }); // delete
     const res = await request(app).delete('/api/feedback/comments/comm-1').set('Authorization', `Bearer ${token}`);
     expect(res.statusCode).toBe(200);
   });
