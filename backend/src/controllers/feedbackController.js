@@ -27,7 +27,7 @@ const getProjectOwner = async (proyecto_id) => {
  */
 const addFeedback = async (req, res) => {
   try {
-    const usuario_id = req.user.userId;
+    const usuario_id = req.user.id;
     const { projectId } = req.params;
     const { texto, puntuacion } = req.body;
 
@@ -96,7 +96,7 @@ const getProjectFeedback = async (req, res) => {
  */
 const removeComment = async (req, res) => {
   try {
-    const usuario_id = req.user.userId;
+    const usuario_id = req.user.id;
     const { commentId } = req.params;
 
     const comentario = await getCommentById(commentId);

@@ -59,7 +59,7 @@ const uploadToCloudinary = (fileBuffer) => {
  */
 const addProject = async (req, res) => {
   try {
-    const usuario_id = req.user.userId; // Viene del authMiddleware
+    const usuario_id = req.user.id; // Viene del authMiddleware
     const { titulo, descripcion, tecnologias, enlace_proyecto, enlace_repositorio } = req.body;
     
     if (!titulo || !descripcion || !tecnologias) {
@@ -113,7 +113,7 @@ const addProject = async (req, res) => {
  */
 const editProject = async (req, res) => {
   try {
-    const usuario_id = req.user.userId;
+    const usuario_id = req.user.id;
     const { id: proyecto_id } = req.params;
     const { titulo, descripcion, tecnologias, enlace_proyecto, enlace_repositorio } = req.body;
 
@@ -162,7 +162,7 @@ const editProject = async (req, res) => {
  */
 const removeProject = async (req, res) => {
   try {
-    const usuario_id = req.user.userId;
+    const usuario_id = req.user.id;
     const { id: proyecto_id } = req.params;
 
     const portafolio = await getPortfolioByUserId(usuario_id);
