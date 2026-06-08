@@ -43,7 +43,9 @@ describe('Portfolio Integration Tests', () => {
   });
 
   it('Obtener Portafolio Publico: Exitoso', async () => {
-    pool.query.mockResolvedValueOnce({ rows: [{ id: 'port-1', titulo: 'Mi Portafolio', proyectos: [] }] });
+    pool.query.mockResolvedValueOnce({ rows: [{ id: '123', nombre: 'Test' }] });
+    pool.query.mockResolvedValueOnce({ rows: [{ id: 'port-1', titulo: 'Mi Portafolio' }] });
+    pool.query.mockResolvedValueOnce({ rows: [] });
     const res = await request(app).get('/api/portfolio/123');
     expect(res.statusCode).toBe(200);
   });
@@ -57,7 +59,7 @@ describe('Portfolio Integration Tests', () => {
   it('Obtener Portafolio Publico: Error de servidor', async () => {
     pool.query.mockRejectedValueOnce(new Error('DB Error'));
     const res = await request(app).get('/api/portfolio/123');
-    expect(res.statusCode).toBe(404);
+    expect(res.statusCode).toBe(500);
   });
 
   it('Eliminar Proyecto: Exitoso', async () => {
